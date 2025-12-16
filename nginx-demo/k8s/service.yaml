@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-demo-lb
+  labels:
+    app: nginx-demo
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Cluster
+  selector:
+    app: nginx-demo
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

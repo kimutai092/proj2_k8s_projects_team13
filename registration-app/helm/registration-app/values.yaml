@@ -1,0 +1,23 @@
+image:
+  repository: "985539781710.dkr.ecr.us-east-2.amazonaws.com/registration-app"
+  tag: "v4"
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+
+postgres:
+  image: "postgres:16-alpine"
+  storageClassName: "gp2"
+  storageSize: "5Gi"
+  dbName: "registrations"
+  user: "reguser"
+  password: "regpassword"
+
+otel:
+  enabled: true
+  serviceName: "registration-app"
+  environment: "dev"
+  namespace: "demo"
+  exporterEndpoint: "http://adot-apm-collector.adot-system.svc.cluster.local:4318"

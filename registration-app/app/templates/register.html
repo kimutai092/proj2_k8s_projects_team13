@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Registration</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <h1>Online Registration</h1>
+
+    {% if submitted %}
+      <p>Thank you, {{ full_name }}! Your registration was received.</p>
+      <a href="/">Submit another registration</a>
+    {% else %}
+      <form method="post">
+        <div>
+          <label for="full_name">Full name:</label>
+          <input type="text" id="full_name" name="full_name" required />
+        </div>
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <button type="submit">Register</button>
+      </form>
+    {% endif %}
+  </body>
+</html>
